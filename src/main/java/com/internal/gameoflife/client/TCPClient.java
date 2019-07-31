@@ -10,8 +10,10 @@ import java.net.Socket;
  */
 public class TCPClient {
 	public static void main(String argv[]) throws Exception {
+		String ipAddress = argv[0];
+		int port = Integer.parseInt(argv[1]);
 		while(true) {
-			try (Socket clientSocket = new Socket("localhost", 4444)) {
+			try (Socket clientSocket = new Socket(ipAddress, port)) {
 				if(!clientSocket.isInputShutdown()) {
 					InputStreamReader inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
 					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
